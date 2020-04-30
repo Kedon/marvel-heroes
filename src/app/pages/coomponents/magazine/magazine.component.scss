@@ -1,0 +1,61 @@
+.magazine{
+  width: 276px;
+  margin-top: 40px;
+  &:hover > hr {
+    border-color:#D10000;
+    transition: all 0.5s ease;
+  }
+  hr {
+    width: 40%;
+  }
+
+  &__text {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  img {
+    width: 240px;
+    height: 400px;
+  }
+  h6 {
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+  }
+  p {
+    font-size: 12px;
+    font-family: 'Roboto-Light';
+    padding: 0;
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+
+
+.button {
+  width: auto;
+  border: none;
+  height: 20px;
+  width: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  cursor: pointer;
+
+  transition: all 0.5s ease;
+  &:hover {
+      transform: scale(0.95);
+  }
+  &:active {
+      outline: none;
+      border: none;
+        transform: scale(0.90);
+  }
+      &:focus {outline:0;}
+}

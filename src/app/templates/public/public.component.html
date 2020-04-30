@@ -1,0 +1,18 @@
+<section class="public-content">
+    <div class="public-content__text" [style.backgroundImage]="'url('+ imageSelected +')'">
+      <div>
+        <div class="publicity-image peers ai-c mB-20">
+            <img src="./assets/images/logo.png"/>
+            <h3 class="c-white ta-c w-100p">Santtas</h3>
+        </div>
+          
+          <!-- <p class="ta-c c-white pX-20">Lorem ipsum dolor sit amet, deseruisse efficiendi an duo, sumo euismod fabulas eos ei. Te reque admodum vim. Sit id labore voluptua vituperata. No vel cibo illum, adipisci mediocrem quo ut. Usu congue deserunt patrioque ea.</p>
+          <p class="ta-c c-white pX-20 cur-p" [routerLink]="['/public/answer']"><i class="material-icons fsz-xl"> help_outline </i></p> -->
+      </div>
+     
+    </div>
+    <div class="public-content__form">
+        <router-outlet #route="outlet"></router-outlet>
+    </div>
+  
+</section>

@@ -1,0 +1,58 @@
+.shop-menu {
+    background-color: #EBEBEB;
+    height: 60px;
+}
+
+  .menu {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    &__title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #000;
+      width: 160px;
+    }
+    &__items {
+      display: flex;
+      color: #000;
+      justify-content: space-evenly;
+      width: 100%;
+      height: 28px;
+      cursor: pointer;
+      
+    }
+  }
+  
+  .menu-link {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    height: 100%;
+    &:hover {
+      &::after {
+        color:#FF0000;
+      }
+    }
+    &::after {
+        content: "\25BC";
+        color:#000;
+        padding-left:8px;
+        font-size: 7px;
+        vertical-align: middle;
+      }
+  }
+
+
+  .magazines {
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  .more-button{
+    text-align: center;
+    hr {
+      margin-top: -20px;
+    }
+  }

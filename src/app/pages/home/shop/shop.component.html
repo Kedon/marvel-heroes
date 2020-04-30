@@ -1,0 +1,27 @@
+
+<!--  TOP SHOP MODULE-->
+<div class="custom-content shop-menu">
+    <div class="custom-content__inner">
+        <div class="menu">
+            <div class="menu__title">BROWSE BY</div>
+            <div class="menu__items">
+                <div class="menu-link">SERIES</div>
+                <div class="menu-link">CHARACTERS</div>
+                <div class="menu-link">CREATORS</div>
+            </div>
+          </div>
+    </div>
+</div>
+<div class="custom-content">
+    <div class="custom-content__inner">
+        <div class="magazines">
+            <div *ngFor="let user of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
+                <app-magazine></app-magazine>
+            </div>
+          </div>
+          <div class="more-button">
+            <app-button (click)="functioncall($event)" label="LOAD MORE"> </app-button>
+            <hr>
+        </div>
+    </div>
+</div>

@@ -1,16 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { AppRoutingModule } from './app-routing.module';
+import { NgModule, Injector } from '@angular/core';
+import { PublicComponent } from './templates/public/public.component';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PublicComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  static injector: Injector;
+  constructor(public injector: Injector) {
+    AppModule.injector = injector;
+  }
+}

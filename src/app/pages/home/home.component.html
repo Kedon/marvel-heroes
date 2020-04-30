@@ -1,0 +1,52 @@
+
+<!--  SINGLE PAGE TOP HOME MODULE-->
+<div class="custom-content home-top">
+    <div class="custom-content__inner">
+        <div class="home-top__advertisement">
+            <div class="top-banner">
+                <div class="top-banner__title">ADVERTISEMENT</div>
+                <div class="top-banner__content"> </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  SINGLE PAGE TOP HOME BRAND AND ACTIONS-->
+<div class="custom-content home-brand">
+    <div class="custom-content__inner home-header">
+        <div class="home-brand">
+            <div class="home-brand__logo"></div>
+            <div class="home-brand__social-icons">
+                <button class="custom-button face"></button>
+                <button class="custom-button youtube"></button>
+                <button class="custom-button twiter"></button>
+            </div>
+        </div>
+        <div class="home-action">
+            <div class="home-link">
+                <div class="home-link__item">WELCOME</div>
+                <div class="separator"></div>
+                <div class="home-link__item">MY ACCOUNT</div>
+            </div>
+            <div class="home-search-block">
+                <div class="home-search">
+                    <div class="home-search__input">
+                        <input placeholder="SEARCH MARVEL SHOP" />
+                        <button class="custom-button search"></button>
+                    </div>
+                </div>
+                <div class="separator"></div>
+                <button class="custom-button cart"></button>
+            </div>
+           
+        </div>
+    </div>
+</div>
+<!-- MENU COMPONENT -->
+<app-menu></app-menu>
+<!-- BANNER COMPONENT -->
+<app-banner></app-banner>
+
+<!--  RENDER MODULE CHILDREN PATH-->
+
+<router-outlet #route="outlet"></router-outlet>
+<app-footer></app-footer>

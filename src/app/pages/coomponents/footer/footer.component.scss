@@ -1,0 +1,118 @@
+@import 'src/sass/variables';
+@import 'src/sass/mixins';
+@import 'src/sass/grid';
+
+.footer {
+  background-color: #1F1F1F;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-top: 50px;
+  &__advertisement {
+    background-image: url('src/assets/img/bkg_advertisement_footer.png');
+    width: 100%;
+    height: 126px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+}
+/**
+* Top home banner responsive
+**/
+.banner {
+  width: 50%;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+   margin-top: -10px;
+  align-items: flex-end;
+
+  @include breakpoint(xs){
+      width: 50%;
+  }
+  @include breakpoint(sm){
+      width: 50%;
+  }
+
+
+  &__content {
+      background: #6F6F6F;
+      width: 100%;
+      height: 90px;
+
+  }
+  &__title {
+      background: #515151;
+      font-family: "Roboto-Condensed-Regular";
+      text-transform: uppercase;
+      color: #959595;
+      font-size: 10px;
+      width: 80px;
+      text-align: center;
+      padding-top: 3px;
+      padding-bottom: 3px;
+  }
+
+}
+.menu-block {
+  display: flex;
+}
+
+.menu {
+  margin-top: 30px;
+  width: 20%;
+  &__title {
+    color: #fff;
+    font-size: 18px;
+    font-family: "Roboto-Condensed-Regular";
+  }
+  &__item {
+    color: #fff;
+    font-size: 14px;
+    font-family: "Roboto-Condensed-Regular";
+    line-height: 2.5;
+  }
+}
+hr {
+  border-color: #818181;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-brand {
+  display: flex;
+  &__logo {
+    background-image: url('src/assets/img/marvel-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 72px;
+    height: 33px;
+  }
+  &__social-icons {
+    display: flex;
+    width: 120px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+}
+
+
+.footer-info {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  &__items {
+    display: flex;
+    color: #818181;
+    font-size: 14px;
+    font-family: "Roboto-Condensed-Regular";
+    justify-content: space-evenly;
+    width: 100%;
+    height: 28px;
+    cursor: pointer;
+    
+  }
+}
