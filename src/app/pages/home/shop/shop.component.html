@@ -1,48 +1,86 @@
-
 <!--  TOP SHOP MODULE-->
 <div class="custom-content shop-menu">
     <div class="custom-content__inner">
         <div class="menu">
             <div class="menu__title">BROWSE BY</div>
             <ul class="menu__items">
-                <li class="menu-link">SERIES
-                    <ul class="menu-options">
-                        <div class="li-ul-options">Opções de Series</div>
-                        <div class="filter-button">
-                            <app-button (click)="functioncall($event)" label="Ok"> </app-button>
-                        </div>    
+
+                <li class="menu-link series">SERIES
+
+                    <ul class="menu-options " *ngIf="series && series.results">
+                        <li class="magazine" *ngFor="let serie of series.results">
+                            <label class="custom-checkbox custom-checkbox-checkbox">
+                                {{serie.title}}
+                                <input type="checkbox" [checked]="serie.selected"
+                                    (change)="serie.selected = !serie.selected" name="series+{{ serie.id }}" />
+                                <div class="custom-checkbox_indicator"></div>
+                            </label>
+
+                        </li>
+                        <div class="marvel filter-button">
+                            <button type="button" class="btn" 
+                                (click)="getData($event)">
+                                <div class="label">ok</div>
+                            </button>
+                        </div>
                     </ul>
                 </li>
-                <li class="menu-link">CHARACTERS
-                    <ul class="menu-options">
-                        <div class="li-ul-options">Opções de Characters</div>
-                        <div class="filter-button">
-                            <app-button (click)="functioncall($event)" label="Ok"> </app-button>
-                        </div>    
+                <li class="menu-link characters">CHARACTERS
+                    <ul class="menu-options" *ngIf="characters && characters.results">
+                        <li class="magazine" *ngFor="let character of characters.results">
+                            <label class="custom-checkbox custom-checkbox-checkbox">
+                                {{character.name}}
+                                <input type="checkbox" [checked]="character.selected"
+                                    (change)="character.selected = !character.selected"
+                                    name="character+{{ character.id }}" />
+                                <div class="custom-checkbox_indicator"></div>
+                            </label>
+                        </li>
+                        <div class="marvel filter-button">
+                            <button type="button" class="btn" 
+                                (click)="getData($event)">
+                                <div class="label">ok</div>
+                            </button>
+                        </div>
                     </ul>
                 </li>
-                <li class="menu-link">CREATORS
-                    <ul class="menu-options">
-                        <div class="li-ul-options">Opções de Creators</div>
-                        <div class="filter-button">
-                            <app-button (click)="functioncall($event)" label="Ok"> </app-button>
+                <li class="menu-link creators">CREATORS
+                    <ul class="menu-options " *ngIf="creators && creators.results">
+                        <li class="magazine" *ngFor="let creator of creators.results">
+                            <label class="custom-checkbox custom-checkbox-checkbox">
+                                {{creator.fullName}}
+                                <input type="checkbox" [checked]="creator.selected"
+                                    (change)="creator.selected = !creator.selected" name="creator+{{ creator.id }}" />
+                                <div class="custom-checkbox_indicator"></div>
+                            </label>
+                        </li>
+                        <div class="marvel filter-button">
+                            <button type="button" class="btn" 
+                                (click)="getData($event)">
+                                <div class="label">ok</div>
+                            </button>
                         </div>
                     </ul>
                 </li>
             </ul>
-          </div>
-         
+        </div>
+
     </div>
 </div>
+
+
 <div class="custom-content">
     <div class="custom-content__inner">
-        <div class="magazines">
-            <div class="magazine" *ngFor="let user of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
-                <app-magazine></app-magazine>
+        <div class="magazines" *ngIf="magazines && magazines.results">
+            <div class="magazine" *ngFor="let magazine of magazines.results">
+                <app-magazine [thumbnail]="magazine.thumbnail" [title]="magazine.title" [creators]="magazine.creators">
+                </app-magazine>
             </div>
-          </div>
-          <div class="more-button">
-            <app-button (click)="functioncall($event)" label="LOAD MORE"> </app-button>
+        </div>
+        <div class="marvel more-button">
+            <button type="button" class="btn" [disabled]="disableMoreButton" (click)="pageOffset($event)">
+                <div class="label">LOAD MORE</div>
+            </button>
             <hr>
         </div>
     </div>

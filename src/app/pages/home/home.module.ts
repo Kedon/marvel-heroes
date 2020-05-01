@@ -9,6 +9,7 @@ import { SharedModule } from '../shared.modules'
 import { BannerComponent } from '../coomponents/banner/banner.comonent'
 import { MenuComponent } from '../coomponents/menu/menu.comonent'
 import { FooterComponent } from '../coomponents/footer/footer.comonent'
+import { HomeService } from './services/home.service';
 // import { SharedModule } from '../../shared/shared.module';
 
 
@@ -18,6 +19,7 @@ import { FooterComponent } from '../coomponents/footer/footer.comonent'
     SharedModule,
     HomeRoutingModule
   ],
+  providers: [HomeService], /*  => Provice home service to HOME MODULES */
   declarations: [HomeComponent, ShopComponent, DetailsComponent, BannerComponent, MenuComponent, FooterComponent]
 })
 export class HomeModule { }

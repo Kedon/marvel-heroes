@@ -18,6 +18,13 @@ button {
           -o-transform: skew(-12deg) scale(0.95);
     }
         &:focus {outline:0;}
+        &:disabled {
+          background: #dddddd;
+          .label {
+            color: #cccccc;
+          }
+        
+        }
 
 }
 .label {

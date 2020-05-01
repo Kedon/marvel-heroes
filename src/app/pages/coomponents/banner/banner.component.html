@@ -1,19 +1,19 @@
 <div class="custom-content banner-block">
-    <div class="custom-content__inner banner-inner">
-        <div class="banner-image" style="background-image: url('../../../../assets/img/banner.png')">
+    <div class="custom-content__inner banner-inner"  *ngIf="banners && banners.length > 0">
+
+        <div class="banner-image" [ngStyle]="{'background-image':'url(' + banners[currentIdx].thumbnail + ')'}">
             <div class="banner-button left">
-                <button class="custom-button back-banner"></button>
+                <button class="custom-button back-banner" (click)="prev()"></button>
             </div>
             <div class="banner-button right">
-                <button class="custom-button next-banner"></button>
+                <button class="custom-button next-banner" (click)="next()"></button>
             </div>
         </div>
         <div class="banner-counter">
-            <div class="banner-counter__item">1</div>
-            <div class="banner-counter__item active">2</div>
-            <div class="banner-counter__item">3</div>
-            <div class="banner-counter__item">4</div>
-            <div class="banner-counter__item">5</div>
+            <div *ngFor="let page of pagination; let i= index" 
+            class="banner-counter__item"
+            [ngClass]="currentIdx === i ? 'active': ''"
+            >{{page+1}}</div>
         </div>
 
     </div>
@@ -22,9 +22,9 @@
 <div class="custom-content banner-text-block">
     <div class="custom-content__inner">
         <div class="banner-text">
-            <div class="banner-text__paragraph">
-                <h1>THE HUNT FOR WOLVERINE KICKS OFF THIS APRIL</h1>
-                <p>CHARLES SOULE AND DAVID MARQUEZ UNRAVEL THE MYSTERY</p>
+            <div class="banner-text__paragraph" *ngIf="banners && banners.length > 0">
+                <h1>{{banners[currentIdx].story}}</h1>
+                <p>{{banners[currentIdx].creators}}</p>
             </div>
             <div class="read-button">
                 <app-button (click)="functioncall($event)" label="READ UP"> </app-button>

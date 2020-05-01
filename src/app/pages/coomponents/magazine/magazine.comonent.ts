@@ -6,7 +6,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     styleUrls: ['./magazine.component.scss']
 })
 export class MagazineComponent implements OnInit {
-    @Input() label: string;
+    @Input() title: string;
+    @Input() thumbnail: string;
+    @Input() creators: string;
     @Output() onClick = new EventEmitter<any>();
 
     constructor() { }

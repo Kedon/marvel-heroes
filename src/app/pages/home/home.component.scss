@@ -91,11 +91,48 @@
         background-size: contain;
         width: 276px;
         height: 126px;
+
+        @include breakpoint(xs){
+            width: 90px;
+            height: 45px;
+        }
+        @include breakpoint(sm){
+            width: 120px;
+            height: 60px;
+        }
+        @include breakpoint(md){
+            width: 276px;
+            height: 126px;
+        }
+        @include breakpoint(lg){
+            width: 276px;
+            height: 126px;
+        }
+        @include breakpoint(xl){
+            width: 276px;
+            height: 126px;
+        }
+
     }
     &__social-icons {
-        display: flex;
+       
         margin-bottom: 15px;
         margin-left: 10px;
+        @include breakpoint(xs){
+            display: none;
+        }
+        @include breakpoint(sm){
+            display: none;
+        }
+        @include breakpoint(md){
+            display: flex;
+        }
+        @include breakpoint(lg){
+            display: flex;
+        }
+        @include breakpoint(xl){
+            display: flex;
+        }
     }
 }
 
