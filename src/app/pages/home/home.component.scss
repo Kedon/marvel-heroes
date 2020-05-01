@@ -7,12 +7,11 @@
 **/
 .home-top {
     background: #515151;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 22px;
+    padding-bottom: 22px;
     &__advertisement {
         background-image: url('src/assets/img/bkg_advertisement.png');
         width: 100%;
-        height: 160px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -22,6 +21,7 @@
 .home-link {
     display: flex;
     &__item {
+        font-family: "Roboto-Condensed-Regular";
         margin-left: 5px;
         margin-right: 5px;
         font-size: 15px;
@@ -32,24 +32,24 @@
 * Top home banner responsive
 **/
 .top-banner {
-    width: 50%;
-    height: 90px;
+    width: 100%;
+    padding-top: 3px;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
-     margin-top: -10px;
     align-items: flex-end;
 
     @include breakpoint(xs){
-        width: 50%;
+        width: 728px;
     }
     @include breakpoint(sm){
-        width: 50%;
+        width: 728px;
     }
 
 
     &__content {
         background: #6F6F6F;
-        width: 100%;
+        width: 728px;
         height: 90px;
 
     }
@@ -59,10 +59,11 @@
         text-transform: uppercase;
         color: #959595;
         font-size: 10px;
-        width: 80px;
         text-align: center;
-        padding-top: 3px;
-        padding-bottom: 3px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 2px;
+        padding-right: 2px;
     }
 
 }
@@ -93,7 +94,7 @@
     }
     &__social-icons {
         display: flex;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         margin-left: 10px;
     }
 }
@@ -106,21 +107,23 @@
 */
 .home-action {
   display: flex;
-    align-items: baseline;
+    align-items: flex-end;
     flex-direction: column;
     justify-content: space-between;
-    height: 120px;
-    margin-bottom: 10px;
+    height: 95px;
+    width: 380px;
+    margin-bottom: 15px;
     margin-left: 10px;
 }
 .home-search-block {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 .home-search {
     background: #fff;
     padding-bottom: 10px;
-    height: 30px;
+    height: 20px;
     display: flex;
     align-items: baseline;
     border-bottom: 1px solid #959595;
@@ -128,10 +131,12 @@
      input {
          border: none;
          font-family: "Roboto-Condensed-Regular";
-         font-size: 15px;
+         font-size: 20px;
+         letter-spacing: 2px;
          transition: all 0.5s ease;
-         width: 150px;
+         width: 260px;
          margin-right: 10px;
+         padding-left: 10px;
         &:hover {
             
         }
