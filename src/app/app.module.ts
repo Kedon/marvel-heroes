@@ -5,15 +5,20 @@ import { PublicComponent } from './templates/public/public.component';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    PublicComponent,
+    PublicComponent
+    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
     
   ],
   providers: [],

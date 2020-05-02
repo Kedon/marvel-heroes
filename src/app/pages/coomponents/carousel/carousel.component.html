@@ -1,0 +1,67 @@
+<!-- casousel container -->
+<div class="carousel-container">
+  <!-- casousel boxed -->
+  <div class="custom-content__inner carousel" *ngIf="banners && banners.length > 0">
+    <!-- casousel item -->
+    <ng-container *ngFor="let banner of banners; let i = index">
+      <div *ngIf="i === currentSlide">
+        <div class="carousel-image current" [@slideAnimation]="animationType">
+            <img
+            [src]="banner.thumbnail"
+            class="slide"
+          />
+        </div>
+      </div>
+    </ng-container>
+    <div class="carousel-image next">
+      <img
+      [src]="banners[currentSlide === (banners.length-1) ? 0 : currentSlide + 1].thumbnail"
+      class="slide"
+      [@slideAnimation]="animationType"
+    />
+    </div>
+    <div class="carousel-image prev">
+      <img
+      [src]="banners[currentSlide === 0 ? (banners.length-1): currentSlide - 1].thumbnail"
+      class="slide"
+      [@slideAnimation]="animationType"
+    />
+    </div>
+    
+    
+  
+    <!-- controls -->
+    <button class="control prev" (click)="onPreviousClick()">
+      <span class="arrow left"></span>
+    </button>
+    <button class="control next" (click)="onNextClick()">
+      <span class="arrow right"></span>
+    </button>
+    <div class="banner-counter" >
+      <button *ngFor="let page of pagination; let i= index" 
+      class="banner-counter__item"
+      [ngClass]="currentSlide === i ? 'active': ''"
+      (click)="onGoToClick(page)"
+      >{{page+1}}</button>
+  </div>
+  </div>
+</div>
+<div class="custom-content banner-text-block">
+  <div class="custom-content__inner">
+      <div class="banner-text">
+          <div class="banner-text__paragraph" *ngIf="banners && banners.length > 0" [@slideAnimation]="animationType">
+              <h1>{{banners[currentSlide].story}}</h1>
+              <p>{{banners[currentSlide].creators}}</p>
+          </div>
+          <div class="read-button">
+              <app-button (click)="functioncall($event)" label="READ UP"> </app-button>
+              <hr>
+          </div>
+      </div>
+
+
+  </div>
+
+
+</div>
+  

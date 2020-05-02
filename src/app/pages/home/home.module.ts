@@ -7,6 +7,7 @@ import { ShopComponent } from './shop/shop.component';
 import { DetailsComponent } from './details/details.component';
 import { SharedModule } from '../shared.modules'
 import { BannerComponent } from '../coomponents/banner/banner.comonent'
+import { CarouselComponent } from '../coomponents/carousel/carousel.component'
 import { MenuComponent } from '../coomponents/menu/menu.comonent'
 import { FooterComponent } from '../coomponents/footer/footer.comonent'
 import { HomeService } from './services/home.service';
@@ -20,6 +21,6 @@ import { HomeService } from './services/home.service';
     HomeRoutingModule
   ],
   providers: [HomeService], /*  => Provice home service to HOME MODULES */
-  declarations: [HomeComponent, ShopComponent, DetailsComponent, BannerComponent, MenuComponent, FooterComponent]
+  declarations: [HomeComponent, ShopComponent, DetailsComponent, BannerComponent, CarouselComponent, MenuComponent, FooterComponent]
 })
 export class HomeModule { }
