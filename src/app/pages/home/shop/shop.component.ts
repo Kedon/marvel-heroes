@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { HomeService } from '../services/home.service'
-import { IMagazine, IData, ISerie, ICharacter, ICreator } from '../interfaces'
+import { IMagazine, IData, ISerie, ICharacter, ICreator, Dictionary } from '../interfaces'
 
 
 @Component({
@@ -20,15 +20,46 @@ export class ShopComponent implements OnInit {
   public loader = false;
   public disableMoreButton = false;
   public allMagazines = [];
-  public filter = { }
+  public filter = {}
+  public filterSelecteds: {
+    series: ISerie[],
+    characters: ICharacter[]
+    creators: ICreator[]
+
+  }
+  public isOnline: boolean = navigator.onLine
+
   /**
    *  Injecting http service to api
    * @param api
    */
   constructor(private api: HomeService) {
+    /**
+     * Initialize selected empty
+     */
+    this.filterSelecteds = {
+      series: [],
+      characters: [],
+      creators: []
+    }
+    /**
+    * Event listener check internet conection
+    */
+    window.addEventListener('online', () => {
+      this.isOnline = true;
+      this.loadPage()
+    });
+
+    window.addEventListener('offline', () => {
+      this.isOnline = false
+    });
 
   }
   ngOnInit() {
+    this.loadPage()
+  }
+
+  loadPage = () => {
     this.getMagazines(0)
     this.browseMenu()
   }
@@ -62,8 +93,6 @@ export class ShopComponent implements OnInit {
           (author) => author.name).slice(0, 2).join(', ')
       }))
       this.maxPages = Math.ceil(total / limit)
-
-      console.log(this.maxPages)
 
       /**
        * Magazines data
@@ -143,7 +172,6 @@ export class ShopComponent implements OnInit {
         results: characters,
         total: total
       }
-
     } catch (error) {
       alert(JSON.stringify(error))
     }
@@ -184,44 +212,111 @@ export class ShopComponent implements OnInit {
   /**
    * Format browser menu
    */
-  public browseMenu = async () => {
+  browseMenu = async () => {
     await this.getSeries()
     await this.getCharacters()
     await this.getCreators()
   }
 
   /**
+   * Clear filter 
+   */
+
+  clearSerieFilter = async () => {
+    let series: Array<ISerie> = this.series.results.map((s: ISerie) => ({
+      id: s.id,
+      title: s.title,
+      description: s.title,
+      selected: false
+    }))
+    this.series.results = series
+  }
+
+  /**
+   * Check has daya selected
+   */
+  onChangeCheckbox = () => {
+    const series: Array<ISerie> = this.series.results.filter(s => s.selected).map(s => s)
+    const characters: Array<ICharacter> = this.characters.results.filter(s => s.selected).map(s => s)
+    const creators: Array<ICreator> = this.creators.results.filter(s => s.selected).map(s => s)
+
+    this.filterSelecteds = {
+      series,
+      characters,
+      creators
+    }
+  }
+
+  handleRemoveOne = (data, type) => {
+    switch (type) {
+      case 'series': {
+        let series: Array<ISerie> = this.series.results.map((s: ISerie) => ({
+         ...s,
+          selected: s.id === data.id ? false : s.selected
+        }))
+        let idxRemove = this.filterSelecteds.series.findIndex(x => x.id === data.id)
+        this.filterSelecteds.series.splice(idxRemove, 1)
+        this.series.results = series
+        break;
+      }
+      case 'characters': {
+        let characters: Array<ISerie> = this.characters.results.map((s: ISerie) => ({
+          ...s,
+          selected: s.id === data.id ? false : s.selected
+        }))
+        let idxRemove = this.filterSelecteds.characters.findIndex(x => x.id === data.id)
+        this.filterSelecteds.characters.splice(idxRemove, 1)
+        this.characters.results = characters
+        break;
+      }
+      case 'creators': {
+        let creators: Array<ISerie> = this.creators.results.map((s: ISerie) => ({
+          ...s,
+           selected: s.id === data.id ? false : s.selected
+         }))
+         let idxRemove = this.filterSelecteds.creators.findIndex(x => x.id === data.id)
+         this.filterSelecteds.creators.splice(idxRemove, 1)
+         this.creators.results = creators
+        //statements; 
+        break;
+      }
+      default: {
+        //statements; 
+        break;
+      }
+    }
+    this.getData()
+  }
+
+  /**
    * Filter magazines by browser category
    */
-  public getData = (evt) => {
-    this.allMagazines=[]
+  getData = () => {
+    this.allMagazines = []
+   
     /**
      * Series comma sepatated
      */
-    const series = this.series.results.filter( s => s.selected).map(s => s.id).join(',')
-    const characters = this.characters.results.filter( s => s.selected).map(s => s.id).join(',')
-    const creators = this.creators.results.filter( s => s.selected).map(s => s.id).join(',')
+    const series = this.filterSelecteds.series.filter(s => s.selected).map(s => s.id).join(',')
+    const characters = this.filterSelecteds.characters.filter(s => s.selected).map(s => s.id).join(',')
+    const creators = this.filterSelecteds.creators.filter(s => s.selected).map(s => s.id).join(',')
 
     let params = {
       characters: characters,
       series: series,
       creators: creators
     }
-    if(!series) {
+    if (!series) {
       delete params.series
     }
-    if(!characters) {
+    if (!characters) {
       delete params.characters
     }
-    if(!creators) {
+    if (!creators) {
       delete params.creators
     }
-     if(!series && !characters && !creators) {
-       alert("Você não selecionou nenhum filtro")
-       return 
-     }
    
-     this.filter = params
-     this.getMagazines(0)
+    this.filter = params;
+    this.getMagazines(0)
   }
 }

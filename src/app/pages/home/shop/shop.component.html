@@ -8,18 +8,19 @@
                 <li class="menu-link series">SERIES
 
                     <ul class="menu-options " *ngIf="series && series.results">
-                        <li class="magazine" *ngFor="let serie of series.results">
+                        <li class="magazine" *ngFor="let serie of series.results, let idx = index">
                             <label class="custom-checkbox custom-checkbox-checkbox">
                                 {{serie.title}}
                                 <input type="checkbox" [checked]="serie.selected"
-                                    (change)="serie.selected = !serie.selected" name="series+{{ serie.id }}" />
+                                    (change)="serie.selected = !serie.selected; onChangeCheckbox(idx)"
+                                    name="series+{{ serie.id }}" />
                                 <div class="custom-checkbox_indicator"></div>
                             </label>
 
                         </li>
+
                         <div class="marvel filter-button">
-                            <button type="button" class="btn" 
-                                (click)="getData($event)">
+                            <button type="button" (click)="getData($event)">
                                 <div class="label">ok</div>
                             </button>
                         </div>
@@ -31,14 +32,13 @@
                             <label class="custom-checkbox custom-checkbox-checkbox">
                                 {{character.name}}
                                 <input type="checkbox" [checked]="character.selected"
-                                    (change)="character.selected = !character.selected"
+                                    (change)="character.selected = !character.selected; onChangeCheckbox(idx)"
                                     name="character+{{ character.id }}" />
                                 <div class="custom-checkbox_indicator"></div>
                             </label>
                         </li>
                         <div class="marvel filter-button">
-                            <button type="button" class="btn" 
-                                (click)="getData($event)">
+                            <button type="button" (click)="getData($event)">
                                 <div class="label">ok</div>
                             </button>
                         </div>
@@ -50,13 +50,13 @@
                             <label class="custom-checkbox custom-checkbox-checkbox">
                                 {{creator.fullName}}
                                 <input type="checkbox" [checked]="creator.selected"
-                                    (change)="creator.selected = !creator.selected" name="creator+{{ creator.id }}" />
+                                    (change)="creator.selected = !creator.selected; onChangeCheckbox(idx)"
+                                    name="creator+{{ creator.id }}" />
                                 <div class="custom-checkbox_indicator"></div>
                             </label>
                         </li>
                         <div class="marvel filter-button">
-                            <button type="button" class="btn" 
-                                (click)="getData($event)">
+                            <button type="button" (click)="getData($event)">
                                 <div class="label">ok</div>
                             </button>
                         </div>
@@ -66,11 +66,23 @@
         </div>
 
     </div>
+
 </div>
 
 
 <div class="custom-content">
     <div class="custom-content__inner">
+        <div class="chips-group">
+            <div class="chips-group__chips" *ngFor="let serie of filterSelecteds.series">
+                {{serie.title}} <button type="button" [disabled]="loader" (click)="handleRemoveOne(serie, 'series')">X</button>
+            </div>
+            <div class="chips-group__chips" *ngFor="let character of filterSelecteds.characters">
+                {{character.name}} <button type="button" [disabled]="loader" (click)="handleRemoveOne(character, 'characters')">X</button>
+            </div>
+            <div class="chips-group__chips" *ngFor="let creator of filterSelecteds.creators">
+                {{creator.fullName}} <button type="button" [disabled]="loader" (click)="handleRemoveOne(creator, 'creators')">X</button>
+            </div>
+        </div>
         <div class="magazines" *ngIf="magazines && magazines.results">
             <div class="magazine" *ngFor="let magazine of magazines.results">
                 <app-magazine [thumbnail]="magazine.thumbnail" [title]="magazine.title" [creators]="magazine.creators">
@@ -78,7 +90,7 @@
             </div>
         </div>
         <div class="marvel more-button">
-            <button type="button" class="btn" [disabled]="disableMoreButton" (click)="pageOffset($event)">
+            <button type="button" [disabled]="disableMoreButton || loader" (click)="pageOffset($event)">
                 <div class="label">LOAD MORE</div>
             </button>
             <hr>

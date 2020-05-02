@@ -121,12 +121,16 @@ export class CarouselComponent implements OnInit {
   onPreviousClick() {
     const previous = this.currentSlide - 1;
     this.currentSlide = previous < 0 ? this.banners.length - 1 : previous;
+    clearInterval(this.idSetInterval);
+    this.bannerAutoPlay()
     console.log("previous clicked, new current slide is: ", this.currentSlide);
   }
 
   onNextClick() {
     const next = this.currentSlide + 1;
     this.currentSlide = next === this.banners.length ? 0 : next;
+    clearInterval(this.idSetInterval);
+    this.bannerAutoPlay()
     console.log("next clicked, new current slide is: ", this.currentSlide);
   }
 

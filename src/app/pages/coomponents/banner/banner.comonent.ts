@@ -20,7 +20,7 @@ export class BannerComponent implements OnInit {
     constructor(private api: HomeService) { }
 
     ngOnInit() {
-        this.getBanners();
+        // this.getBanners();
     }
     ngOnDestroy() {
         if (this.idSetInterval) {
@@ -40,6 +40,7 @@ export class BannerComponent implements OnInit {
      * Load banners from Marvel api
      */
     getBanners = async () => {
+        return false 
         try {
             const data: IData = await this.api.getBanners();
             const { count, limit, offset, total } = data
@@ -65,8 +66,9 @@ export class BannerComponent implements OnInit {
             /**
              * Magazines data
              */
-            console.log(banners)
+            alert(banners)
             this.banners = banners
+            console.log(JSON.stringify(this.banners))
             this.bannerAutoPlay()
             //  this.selectedBanner = this.banners[0]
         } catch (error) {

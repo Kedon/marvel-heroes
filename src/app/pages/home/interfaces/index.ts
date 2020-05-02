@@ -13,7 +13,8 @@ export interface IMagazine {
 export interface ISerie {
   id?: string,
   title: string,
-  description: string
+  description: string,
+  selected?: boolean
 }
 
 /**
@@ -22,7 +23,8 @@ export interface ISerie {
 export interface ICharacter {
   id?: string,
   name: string,
-  description?: string
+  description?: string,
+  selected?: boolean
 }
 
 /**
@@ -30,7 +32,8 @@ export interface ICharacter {
  */
 export interface ICreator {
   id?: string,
-  fullName: string
+  fullName: string,
+  selected?: boolean
 }
 
 /**
@@ -45,6 +48,19 @@ export interface IBanner {
   creators: string
 }
 
+/**
+ * Handle error interface
+ */
+export interface ErrorResponse {
+  code: number,
+  message: string
+ }
+
+ export interface IHandleError {
+  operation?:  string,
+  statusText?: string,
+  error: ErrorResponse
+ }
 
 
 /**
@@ -57,3 +73,10 @@ export interface IData {
   results?: Array<any>,
   total?: number
 };
+
+/**
+ * Dictionary interface
+ */
+export interface Dictionary<T> {
+  [Key: string]:Array<T>;
+}

@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppSettings } from '../../../app.constants'
-import { IData } from '../interfaces'
+import { IData, IHandleError } from '../interfaces'
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
   constructor(private http: HttpClient) { }
-  /**
-   * Get magazines endpoint
-   */
 
-  getMagazines({offset= '0', filter}) {
+  /**
+   *  Get magazines endpoint
+   * @param param0 
+   * @param filter Object:<array[number]>
+   */
+  getMagazines = ({offset= '0', filter}) => {
     return new Promise((resolve, reject) => {
       const params = {
         ts: AppSettings.API_TS,
@@ -29,14 +32,14 @@ export class HomeService {
         .get<IData>(`${AppSettings.API_ENDPOINT}/comics`, { params })
         .toPromise()
         .then((res: any) => resolve(res.data))
-        .catch(error => reject(error));
+        .catch(error => reject(this.handleError('getMagazines', error)));
     });
   }
+
   /**
    * Get series endpoint
    */
-
-  getSeries() {
+  getSeries = () =>{
     return new Promise((resolve, reject) => {
       const params = {
         ts: AppSettings.API_TS,
@@ -51,14 +54,14 @@ export class HomeService {
         .get<IData>(`${AppSettings.API_ENDPOINT}/series`, { params })
         .toPromise()
         .then((res: any) => resolve(res.data))
-        .catch(error => reject(error));
+        .catch(error => reject(this.handleError('getSeries', error)));
     });
   }
   /**
    * Get characters endpoint
    */
 
-  getCharacters() {
+  getCharacters = () => {
     return new Promise((resolve, reject) => {
       const params = {
         ts: AppSettings.API_TS,
@@ -73,7 +76,7 @@ export class HomeService {
         .get<IData>(`${AppSettings.API_ENDPOINT}/characters`, { params })
         .toPromise()
         .then((res: any) => resolve(res.data))
-        .catch(error => reject(error));
+        .catch(error =>  reject(this.handleError('getCharacters', error)));
     });
   }
 
@@ -81,7 +84,7 @@ export class HomeService {
  * Get series endpoint
  */
 
-  getCreators() {
+  getCreators = () => {
     return new Promise((resolve, reject) => {
       const params = {
         ts: AppSettings.API_TS,
@@ -95,14 +98,14 @@ export class HomeService {
         .get<IData>(`${AppSettings.API_ENDPOINT}/creators`, { params })
         .toPromise()
         .then((res: any) => resolve(res.data))
-        .catch(error => reject(error));
+        .catch(error => reject(this.handleError('getCreators', error)));
     });
   }
   /**
  * Get series endpoint
  */
 
-  getBanners() {
+  getBanners = () => {
     return new Promise((resolve, reject) => {
       const params = {
         ts: AppSettings.API_TS,
@@ -117,9 +120,25 @@ export class HomeService {
         .get<IData>(`${AppSettings.API_ENDPOINT}/comics`, { params })
         .toPromise()
         .then((res: any) => resolve(res.data))
-        .catch(error => reject(error));
+        .catch(error => reject(this.handleError('getBanners', error)));
     });
   }
+
+  /**
+   *  Error handling from API
+   * @param operation 
+   * @param err 
+   */
+  private handleError(operation = 'operation', err?:IHandleError) {
+    return (
+      {
+        operation:  operation,
+        statusText: err.statusText,
+        code: err.error.code,
+        message: err.error.message
+      })
+  }
+    
 
 }
 

@@ -1,5 +1,11 @@
 
 <!--  SINGLE PAGE TOP HOME MODULE-->
+<div class="no-internet-conection internet-no-conection-hidden" [ngClass]="isOnline ? 'internet-no-conection-hidden': 'internet-no-conection-show'">
+    <div class="wi-fi-icon">
+        <div class="wi-fi"></div>
+    </div>
+    <div class="wi-fi-text">Sem conexão com a internet</div>
+</div>
 <div class="custom-content home-top">
     <div class="custom-content__inner">
         <div class="home-top__advertisement">
