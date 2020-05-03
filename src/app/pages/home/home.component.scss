@@ -6,7 +6,7 @@
 * Top home background
 **/
 .home-top {
-    background: #515151;
+    background: $grey;
     padding-top: 22px;
     padding-bottom: 22px;
     &__advertisement {
@@ -24,8 +24,8 @@
         font-family: "Roboto-Condensed-Regular";
         margin-left: 5px;
         margin-right: 5px;
-        font-size: 15px;
-        color: #515151;
+        font-size: $font-sm;
+        color: $grey;
     }
 }
 /**
@@ -48,7 +48,7 @@
 
 
     &__content {
-        background: #6F6F6F;
+        background: $medium-grey;
         width: 728px;
         height: 90px;
         @include breakpoint(xs){
@@ -71,10 +71,10 @@
 
     }
     &__title {
-        background: #515151;
-        font-family: "Roboto-Condensed-Regular";
+        background: $grey;
+        font-family: $roboto-condensed-regular;
         text-transform: uppercase;
-        color: #959595;
+        color: $muted;
         font-size: 10px;
         text-align: center;
         padding-top: 1px;
@@ -98,7 +98,7 @@
 }
 
 .home-brand {
-    background: #fff;
+    background: $white;
     height: auto;
     display: flex;
     align-items: flex-end;
@@ -175,17 +175,17 @@
     width: 100%;
 }
 .home-search {
-    background: #fff;
+    background: $white;
     padding-bottom: 10px;
     height: 20px;
     display: flex;
     align-items: baseline;
-    border-bottom: 1px solid #959595;
+    border-bottom: 1px solid $muted;
 
      input {
          border: none;
-         font-family: "Roboto-Condensed-Regular";
-         font-size: 20px;
+         font-family: $roboto-condensed-regular;
+         font-size: $font-md;
          letter-spacing: 2px;
          transition: all 0.5s ease;
          width: 260px;

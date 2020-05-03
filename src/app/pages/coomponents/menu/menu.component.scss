@@ -1,41 +1,50 @@
-.menu-block {
-  background: #1F1F1F;
-}
-.menu {
+@import 'src/sass/variables';
+
+.nav-menu {
   display: flex;
   align-items: center;
-  &__title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-  }
-  &__items {
+  justify-content: center;
+  background-color: $primary;
+}
+
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
     display: flex;
-    color: #fff;
-    font-size: 20px;
-    justify-content: space-evenly;
+     justify-content: space-evenly;
     width: 100%;
     cursor: pointer;
-    border-radius: 2pc solid #fff;
-    
+  }
+
+  li {
+    font-size: $font-md;
+    font-family: $roboto-condensed-regular;
+    border-bottom: solid 2px $primary;
+    padding: 12px 12px;
+    outline: 0;
+    &:first-child {
+      font-size: $font-lg;
+      font-family: $roboto-condensed-bold;
+    }
+    &:hover{
+      border-color: $secondary;
+      padding-bottom: 10px;
+    }
+    &.active-link {
+      border-color: $secondary;
+    }
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: $white;
+    &:hover{
+      color: $muted;
+    }
+
   }
 }
 
-.menu-link {
-  display: flex;
-  align-items: center;
-  font-size: 15px;
-  height: 100%;
-  font-family: "Roboto-Condensed-Regular";
-  padding: 10px 0;
-  outline: 0;
-  border-bottom: 2px solid #1f1f1f;
-  &:hover {
-    border-color:#FF0000;
-    color: #ccc
-  }
-  &.active-link {
-    border-color:#FF0000;
-    color: #ccc
-  }
-}
