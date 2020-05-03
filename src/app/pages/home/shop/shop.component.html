@@ -83,9 +83,8 @@
                 {{creator.fullName}} <button type="button" [disabled]="loader" (click)="handleRemoveOne(creator, 'creators')"></button>
             </div>
         </div>
-        <div *ngIf="hasNoData">
-           <H1> NÃO EXISTEM DADOS PARA SEREM EXIBIDOS</H1>
-           
+        <div *ngIf="loader">
+            <h1>Loader...</h1>
         </div>
         <div class="magazines" *ngIf="magazines && magazines.results">
             <div class="magazine" *ngFor="let magazine of magazines.results">
@@ -93,13 +92,13 @@
                 </app-magazine>
             </div>
         </div>
-        <div class="no-results">
+        <div class="no-results" *ngIf="hasNoData">
             <h3>No items matching your search criteria were found.</h3>
             <p>Please adjust your search criteria and try again</p>
             <button>Click here to clear your filter</button>
         </div>
         <div class="marvel more-button">
-            <button type="button" [disabled]="disableMoreButton || loader" (click)="pageOffset($event)">
+            <button type="button" [disabled]="disableMoreButton || loader || hasNoData" (click)="pageOffset($event)">
                 <div class="label">LOAD MORE</div>
             </button>
             <hr>
