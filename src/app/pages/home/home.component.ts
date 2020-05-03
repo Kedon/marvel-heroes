@@ -9,20 +9,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  public isOnline: boolean = navigator.onLine
-
-  constructor() {
-    /**
-     * Event listener check internet conection
-     */
-    window.addEventListener('online', () => {
-      this.isOnline = true
-    });
-
-    window.addEventListener('offline', () => {
-      this.isOnline = false
-    });
-  }
 
   ngOnInit() {
   }

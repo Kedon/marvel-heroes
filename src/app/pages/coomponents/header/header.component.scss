@@ -1,0 +1,152 @@
+@import 'src/sass/variables';
+@import 'src/sass/mixins';
+@import 'src/sass/grid';
+
+/**
+* Top home background
+**/
+.home-top {
+    background: $grey;
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+.home-link {
+    display: flex;
+    &__item {
+        font-family: "Roboto-Condensed-Regular";
+        margin-left: 5px;
+        margin-right: 5px;
+        font-size: $font-sm;
+        color: $grey;
+    }
+}
+/**
+* Top home banner responsive
+**/
+/*
+***
+* Brand, social icon and search
+***
+***
+*/
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 160px;
+}
+
+.home-brand {
+    background: $white;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+
+    &__logo {
+        background-image: url('src/assets/img/marvel-logo.png');
+        background-size: contain;
+        width: 276px;
+        height: 126px;
+
+        @include breakpoint(xs){
+            width: 90px;
+            height: 45px;
+        }
+        @include breakpoint(sm){
+            width: 120px;
+            height: 60px;
+        }
+        @include breakpoint(md){
+            width: 276px;
+            height: 126px;
+        }
+        @include breakpoint(lg){
+            width: 276px;
+            height: 126px;
+        }
+        @include breakpoint(xl){
+            width: 276px;
+            height: 126px;
+        }
+
+    }
+    &__social-icons {
+       
+        margin-bottom: 15px;
+        margin-left: 10px;
+        @include breakpoint(xs){
+            display: none;
+        }
+        @include breakpoint(sm){
+            display: none;
+        }
+        @include breakpoint(md){
+            display: flex;
+        }
+        @include breakpoint(lg){
+            display: flex;
+        }
+        @include breakpoint(xl){
+            display: flex;
+        }
+    }
+}
+
+/*
+***
+* Brand, social icon and search
+***
+***
+*/
+.home-action {
+  display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 95px;
+    width: 380px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+.home-search-block {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.home-search {
+    background: $white;
+    padding-bottom: 10px;
+    height: 20px;
+    display: flex;
+    align-items: baseline;
+    border-bottom: 1px solid $muted;
+
+     input {
+         border: none;
+         font-family: $roboto-condensed-regular;
+         font-size: $font-md;
+         letter-spacing: 2px;
+         transition: all 0.5s ease;
+         width: 260px;
+         margin-right: 10px;
+         padding-left: 10px;
+         @include breakpoint(xs){
+            width: 200px;
+        }
+        @include breakpoint(sm){
+            width: 260px;
+        }
+
+        &:focus {
+            border: none; 
+            outline: none;
+        }
+        &:active {
+            outline: none;
+            border: none;
+        }
+    }
+    &__social-icons {
+        display: flex;
+    }
+}   

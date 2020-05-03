@@ -1,0 +1,75 @@
+@import 'src/sass/variables';
+@import 'src/sass/mixins';
+@import 'src/sass/grid';
+
+// Colors
+$bg-color: rgba(0, 0, 0, 0);
+$dot-color: rgb(255, 255, 255);
+
+// Dimensions
+$dot-size: 1px;
+$dot-space: 6px;
+
+
+.advertisement__container {
+    background: radial-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 0px);
+    background-size: 7px 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.advertisement {
+    width: 100%;
+    padding-top: 3px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    @include breakpoint(xs){
+        width: 728px;
+    }
+    @include breakpoint(sm){
+        width: 728px;
+    }
+
+
+    &__content {
+        background: $medium-grey;
+        width: 728px;
+        height: 90px;
+        @include breakpoint(xs){
+            width: 90%;
+        }
+        @include breakpoint(sm){
+            width: 90%;
+        }
+        @include breakpoint(md){
+            width: 728px;
+          // maybe some desktop layout styles.
+        }
+        @include breakpoint(lg){
+            width: 728px;
+          // maybe some desktop layout styles.
+        }
+        @include breakpoint(xl){
+            width: 728px;
+        }
+
+    }
+    &__title {
+        background: $grey;
+        font-family: $roboto-condensed-regular;
+        text-transform: uppercase;
+        color: $muted;
+        font-size: 10px;
+        text-align: center;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+}
