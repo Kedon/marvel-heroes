@@ -1,5 +1,6 @@
 .magazine{
   width: calc(100% - 30px);
+  // width: 25%;
   margin: 40px 15px 0 15px;
   &:hover > hr {
     border-color:#D10000;

@@ -1,3 +1,7 @@
+@import 'src/sass/variables';
+@import 'src/sass/mixins';
+@import 'src/sass/grid';
+
 .shop-menu {
     background-color: #EBEBEB;
     height: 60px;
@@ -93,6 +97,16 @@
 
   .magazine {
     width: 25%;
+
+    @include breakpoint(xs){
+      width: 50%;
+    }
+    @include breakpoint(sm){
+        width: 33%;
+    }
+    @include breakpoint(md){
+        width: 25%;
+    }
   }
 
   .more-button{
