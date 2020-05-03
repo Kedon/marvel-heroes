@@ -35,13 +35,7 @@ $darkGrey   : #4e5052;
 $royalBlue  : #0e6c8e;
 $charcoal   : #4e5052;
 
-$primary    : #1F1F1F;
-$secondary  : #ED1B24;
-$dark-grey  : #353535;
-$grey       : #515151;
-$medium-grey: #6F6F6F;
-$muted: #959595;
-$light-grey : #EBEBEB;
+
 
 // Colour Schemes
 $backgroundColour               : #ffe9ce;
@@ -108,6 +102,14 @@ $container-large-desktop:      (1140px + $grid-gutter-width) !default;
 //** For `$screen-lg-min` and up.
 $container-lg:                 $container-large-desktop !default;
 
+//THEME COLORS
+$primary    : #1F1F1F;
+$secondary  : #ED1B24;
+$dark-grey  : #353535;
+$grey       : #515151;
+$medium-grey: #6F6F6F;
+$muted      : #959595;
+$light-grey : #EBEBEB;
 
 //FONT-FAMILY
 $roboto-regular: "Roboto-Regular";
