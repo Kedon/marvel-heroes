@@ -74,13 +74,13 @@
     <div class="custom-content__inner">
         <div class="chips-group">
             <div class="chips-group__chips" *ngFor="let serie of filterSelecteds.series">
-                {{serie.title}} <button type="button" [disabled]="loader" (click)="handleRemoveOne(serie, 'series')">X</button>
+                {{serie.title}} <button type="button" [disabled]="loader" (click)="handleRemoveOne(serie, 'series')"></button>
             </div>
             <div class="chips-group__chips" *ngFor="let character of filterSelecteds.characters">
-                {{character.name}} <button type="button" [disabled]="loader" (click)="handleRemoveOne(character, 'characters')">X</button>
+                {{character.name}} <button type="button" [disabled]="loader" (click)="handleRemoveOne(character, 'characters')"></button>
             </div>
             <div class="chips-group__chips" *ngFor="let creator of filterSelecteds.creators">
-                {{creator.fullName}} <button type="button" [disabled]="loader" (click)="handleRemoveOne(creator, 'creators')">X</button>
+                {{creator.fullName}} <button type="button" [disabled]="loader" (click)="handleRemoveOne(creator, 'creators')"></button>
             </div>
         </div>
         <div class="magazines" *ngIf="magazines && magazines.results">
@@ -88,6 +88,11 @@
                 <app-magazine [thumbnail]="magazine.thumbnail" [title]="magazine.title" [creators]="magazine.creators">
                 </app-magazine>
             </div>
+        </div>
+        <div class="no-results">
+            <h3>No items matching your search criteria were found.</h3>
+            <p>Please adjust your search criteria and try again</p>
+            <button>Click here to clear your filter</button>
         </div>
         <div class="marvel more-button">
             <button type="button" [disabled]="disableMoreButton || loader" (click)="pageOffset($event)">
