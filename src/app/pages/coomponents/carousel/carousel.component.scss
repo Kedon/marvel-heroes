@@ -1,3 +1,5 @@
+@import 'src/sass/variables';
+
 // =========================
 // Carousel
 // =========================
@@ -7,7 +9,7 @@
   }
 
   .carousel-container{
-    background-color: #1F1F1F;
+    background-color: $primary;
     max-width: 100%;
     overflow: hidden;
   }
@@ -32,7 +34,8 @@
       left: 100%;
       &::before{
         content: '';
-        background-color: rgba(0,0,0,0.85);
+        background-color: $primary;
+        opacity: 0.9;
         position: absolute;
         top: 0;
         left: 0;
@@ -45,7 +48,8 @@
       left: -100%;
       &::before{
         content: '';
-        background-color: rgba(0,0,0,0.85);
+        background-color: $primary;
+        opacity: 0.9;
         position: absolute;
         top: 0;
         left: 0;
@@ -82,7 +86,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: white;
+    color: $white;
     font-weight: bold;
     font-size: 3em;
     user-select: none;
@@ -113,7 +117,7 @@
     height: 0;
     border-left: 18px solid transparent;
     border-right: 18px solid transparent;
-    border-bottom: 18px solid white;
+    border-bottom: 18px solid $white;
     &.left {
       transform: rotate(-90deg);
     }
@@ -128,11 +132,11 @@
     right: -10px;
     z-index: 5;
     &__item {
-      background: #1F1F1F;
+      background: $primary;
       width: 30px;
       height: 30px;
       margin-top: 4px;
-      color: #fff;
+      color: $white;
       border: none;
       font-size: 12px;
       display: flex;
@@ -140,7 +144,7 @@
       align-items: center;
       justify-content: center;
       &.active {
-        background: #F0141E;
+        background: $secondary;
       }
     }
   }
@@ -151,25 +155,25 @@
     text-align: center;
     max-width: 80%;
     margin: -20px auto 0 auto;
-    background-color: #fff;
-    h1 {
-      font-size: 40px;
+    background-color: $white;
+    h2 {
+      font-size: $font-xl;
+      font-family: $roboto-black;
+      text-transform: uppercase;
       padding: 0;
       margin: 0;
     };
     p{
-      font-size: 20px;
-      font-family: "Roboto";
-      font-weight: "200";
-      color: #1F1F1F
+      font-size: $font-md;
+      font-family: $roboto-regular;
+      text-transform: uppercase;
     }
     &__paragraph {
       padding-left: 100px ;
       padding-right: 100px ;
       padding-Top: 50px ;
-      font-family: "Roboto";
-      color: #1F1F1F; 
-      font-weight: "700";
+      min-height: 160px;
+      color: $primary; 
       padding-bottom: 0 ;
     }
   }

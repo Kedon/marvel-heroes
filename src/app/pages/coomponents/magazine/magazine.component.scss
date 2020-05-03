@@ -1,13 +1,21 @@
+@import 'src/sass/variables';
+
 .magazine{
-  width: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
   margin: 40px 15px 0 15px;
+  text-decoration: none;
   &:hover > hr {
-    border-color:#D10000;
+    border-color:$secondary;
+    transition: all 0.5s ease;
+  }
+  &:hover > h2 {
+    color:$secondary;
     transition: all 0.5s ease;
   }
   hr {
     width: 40%;
-    border-color: #4B4B4B;
+    border-color: $grey;
     border-width: 2px;
   }
 
@@ -20,20 +28,21 @@
     width: 100%;
     height: 'auto';
   }
-  h6 {
-    font-size: 20px;
+  h2 {
+    font-size: $font-md;
+    font-family: $roboto-bold;
+    line-height: 1.25;
     padding: 0;
     margin: 15px 0 0 0;
-    color: #4B4B4B;
-    font-size: 20px;
+    color: $grey;
 
   }
   p {
     
-    font-size: 13px;
+    font-size: $font-xs;
     letter-spacing: 1.5px;
-    color: #4B4B4B;
-    font-family: 'Roboto-Light';
+    color: $grey;
+    font-family: $roboto-regular;
     padding: 0;
     margin-top: 15px;
     text-align: center;
