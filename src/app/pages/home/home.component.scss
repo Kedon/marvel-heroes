@@ -51,6 +51,23 @@
         background: $medium-grey;
         width: 728px;
         height: 90px;
+        @include breakpoint(xs){
+            width: 90%;
+        }
+        @include breakpoint(sm){
+            width: 90%;
+        }
+        @include breakpoint(md){
+            width: 728px;
+          // maybe some desktop layout styles.
+        }
+        @include breakpoint(lg){
+            width: 728px;
+          // maybe some desktop layout styles.
+        }
+        @include breakpoint(xl){
+            width: 728px;
+        }
 
     }
     &__title {
@@ -174,9 +191,13 @@
          width: 260px;
          margin-right: 10px;
          padding-left: 10px;
-        &:hover {
-            
+         @include breakpoint(xs){
+            width: 200px;
         }
+        @include breakpoint(sm){
+            width: 260px;
+        }
+
         &:focus {
             border: none; 
             outline: none;

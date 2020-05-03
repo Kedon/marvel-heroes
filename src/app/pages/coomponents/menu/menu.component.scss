@@ -21,14 +21,19 @@ nav {
   li {
     font-size: $font-md;
     font-family: $roboto-condensed-regular;
+    border-bottom: solid 2px $primary;
     padding: 12px 12px;
+    outline: 0;
     &:first-child {
       font-size: $font-lg;
       font-family: $roboto-condensed-bold;
     }
     &:hover{
-      border-bottom: solid 2px $secondary;
+      border-color: $secondary;
       padding-bottom: 10px;
+    }
+    &.active-link {
+      border-color: $secondary;
     }
   }
 
@@ -42,3 +47,4 @@ nav {
 
   }
 }
+
