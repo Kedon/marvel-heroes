@@ -95,7 +95,7 @@
         <div class="no-results" *ngIf="hasNoData">
             <h3>No items matching your search criteria were found.</h3>
             <p>Please adjust your search criteria and try again</p>
-            <button>Click here to clear your filter</button>
+            <button (click)="clearSerieFilter()">Click here to clear your filter</button>
         </div>
         <div class="marvel more-button">
             <button type="button" [disabled]="disableMoreButton || loader || hasNoData" (click)="pageOffset($event)">

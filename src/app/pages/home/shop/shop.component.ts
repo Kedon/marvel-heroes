@@ -128,6 +128,35 @@ export class ShopComponent implements OnInit {
       alert(JSON.stringify(error))
     }
   }
+
+  /**
+   * Clear filter and unselect checkboxes
+   */
+
+  clearSerieFilter = () => {
+    const series: Array<ISerie> = this.series.results.map(s => ({...s, selected: false}))
+    const characters: Array<ICharacter>  = this.characters.results.map(s => ({...s, selected: false}))
+    const creators: Array<ICreator>  = this.creators.results.map(s => ({...s, selected: false}))
+
+    /**
+     * Update results
+     */
+    this.series.results = series
+    this.characters.results = characters
+    this.creators.results = creators
+
+    /**
+     * Clear selecteds Filters
+     */
+    this.filterSelecteds = {
+      series: [],
+      characters: [],
+      creators: []
+    }
+
+    this.getData()
+  }
+
   /**
    * Load series on page render, populate browser menu
    */
