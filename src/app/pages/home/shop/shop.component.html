@@ -12,7 +12,7 @@
                             <label class="custom-checkbox custom-checkbox-checkbox">
                                 {{serie.title}}
                                 <input type="checkbox" [checked]="serie.selected"
-                                    (change)="serie.selected = !serie.selected; onChangeCheckbox(idx)"
+                                    (change)="serie.selected = !serie.selected; onChangeCheckbox()"
                                     name="series+{{ serie.id }}" />
                                 <div class="custom-checkbox_indicator"></div>
                             </label>
@@ -32,7 +32,7 @@
                             <label class="custom-checkbox custom-checkbox-checkbox">
                                 {{character.name}}
                                 <input type="checkbox" [checked]="character.selected"
-                                    (change)="character.selected = !character.selected; onChangeCheckbox(idx)"
+                                    (change)="character.selected = !character.selected; onChangeCheckbox()"
                                     name="character+{{ character.id }}" />
                                 <div class="custom-checkbox_indicator"></div>
                             </label>
@@ -50,7 +50,7 @@
                             <label class="custom-checkbox custom-checkbox-checkbox">
                                 {{creator.fullName}}
                                 <input type="checkbox" [checked]="creator.selected"
-                                    (change)="creator.selected = !creator.selected; onChangeCheckbox(idx)"
+                                    (change)="creator.selected = !creator.selected; onChangeCheckbox()"
                                     name="creator+{{ creator.id }}" />
                                 <div class="custom-checkbox_indicator"></div>
                             </label>
@@ -82,6 +82,10 @@
             <div class="chips-group__chips" *ngFor="let creator of filterSelecteds.creators">
                 {{creator.fullName}} <button type="button" [disabled]="loader" (click)="handleRemoveOne(creator, 'creators')">X</button>
             </div>
+        </div>
+        <div *ngIf="hasNoData">
+           <H1> NÃO EXISTEM DADOS PARA SEREM EXIBIDOS</H1>
+           
         </div>
         <div class="magazines" *ngIf="magazines && magazines.results">
             <div class="magazine" *ngFor="let magazine of magazines.results">

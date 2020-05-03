@@ -73,7 +73,7 @@ export class CarouselComponent implements OnInit {
 
   constructor(private api: HomeService) { }
 
-  /**
+    /**
      * Load banners from Marvel api
      */
     getBanners = async () => {

@@ -20,7 +20,8 @@ export class ShopComponent implements OnInit {
   public loader = false;
   public disableMoreButton = false;
   public allMagazines = [];
-  public filter = {}
+  public filter = {};
+  public hasNoData = false;
   public filterSelecteds: {
     series: ISerie[],
     characters: ICharacter[]
@@ -59,11 +60,18 @@ export class ShopComponent implements OnInit {
     this.loadPage()
   }
 
+  /**
+   * Load manazines offset 0
+   * Load menu filter Browse BY
+   */
   loadPage = () => {
     this.getMagazines(0)
     this.browseMenu()
   }
 
+  /**
+   * Load more data from custom offset
+   */
   pageOffset = () => {
     this.currentPage++
     console.log(this.currentPage)
@@ -73,7 +81,8 @@ export class ShopComponent implements OnInit {
   }
 
   /**
-   * Get magazines on page render
+   * Load magazines given offset
+   * @param offSet<Number>
    */
   getMagazines = async (offSet) => {
     try {
@@ -92,6 +101,9 @@ export class ShopComponent implements OnInit {
         creators: m.creators.items.map(
           (author) => author.name).slice(0, 2).join(', ')
       }))
+      /**
+       * Get number of pages 
+       */
       this.maxPages = Math.ceil(total / limit)
 
       /**
@@ -104,8 +116,12 @@ export class ShopComponent implements OnInit {
         results: this.allMagazines,
         total: total
       }
+      /**
+       * Loader and button enable / disable control
+       */
       this.loader = false
-      this.disableMoreButton = this.maxPages <= this.currentPage
+      this.hasNoData = total <= 0
+      this.disableMoreButton = total > 0 && this.maxPages <= this.currentPage
 
     } catch (error) {
       this.loader = false
@@ -113,7 +129,7 @@ export class ShopComponent implements OnInit {
     }
   }
   /**
-   * Get series on page render, populate browser menu
+   * Load series on page render, populate browser menu
    */
   getSeries = async () => {
     try {
@@ -131,7 +147,8 @@ export class ShopComponent implements OnInit {
         description: m.description
       }))
       /**
-       * Magazines data
+       * Series data
+       * Maping only important render fields
        */
       this.series = {
         count: count,
@@ -146,7 +163,7 @@ export class ShopComponent implements OnInit {
     }
   }
   /**
-   * Get characters on page render, populate browser menu
+   * Load characters on page render, populate browser menu
    */
   getCharacters = async () => {
     try {
@@ -163,7 +180,7 @@ export class ShopComponent implements OnInit {
         description: m.description
       }))
       /**
-       * Magazines data
+       * Characters data
        */
       this.characters = {
         count: count,
@@ -177,7 +194,7 @@ export class ShopComponent implements OnInit {
     }
   }
   /**
-   * Get series on page render, populate browser menu
+   * Load Creators on page render, populate browser menu
    */
   getCreators = async () => {
     try {
@@ -185,7 +202,7 @@ export class ShopComponent implements OnInit {
       const data: IData = await this.api.getCreators();
       const { count, limit, offset, total } = data
       /**
-       * Series resullt Array<ISerie>
+       * Creators resullt Array<ICreator>
       * Maping only important render fields
        */
 
@@ -194,7 +211,7 @@ export class ShopComponent implements OnInit {
         fullName: m.fullName
       }))
       /**
-       * Magazines data
+       * Creators data
        */
       this.creators = {
         count: count,
@@ -210,72 +227,86 @@ export class ShopComponent implements OnInit {
   }
 
   /**
-   * Format browser menu
+   * Load browse by menu
    */
   browseMenu = async () => {
     await this.getSeries()
     await this.getCharacters()
     await this.getCreators()
   }
-
   /**
-   * Clear filter 
-   */
-
-  clearSerieFilter = async () => {
-    let series: Array<ISerie> = this.series.results.map((s: ISerie) => ({
-      id: s.id,
-      title: s.title,
-      description: s.title,
-      selected: false
-    }))
-    this.series.results = series
-  }
-
-  /**
-   * Check has daya selected
+   * Update filter on checkbox item change
    */
   onChangeCheckbox = () => {
     const series: Array<ISerie> = this.series.results.filter(s => s.selected).map(s => s)
     const characters: Array<ICharacter> = this.characters.results.filter(s => s.selected).map(s => s)
     const creators: Array<ICreator> = this.creators.results.filter(s => s.selected).map(s => s)
 
+    /**
+     * update all filters to filterSeletecteds variable
+     */
     this.filterSelecteds = {
       series,
       characters,
       creators
     }
   }
-
+  
+ /**
+  * On remove chips update filterSelecteds variable
+  * @param data JSON<ISerie>, JSON<characters>,  JSON<creators>, 
+  */
   handleRemoveOne = (data, type) => {
     switch (type) {
       case 'series': {
+        /**
+         * On checkbox unselect update component and remove chips
+         */
         let series: Array<ISerie> = this.series.results.map((s: ISerie) => ({
          ...s,
           selected: s.id === data.id ? false : s.selected
         }))
+        /** Remove chips by selected item index */
         let idxRemove = this.filterSelecteds.series.findIndex(x => x.id === data.id)
         this.filterSelecteds.series.splice(idxRemove, 1)
+
+        /**
+         * Update series results
+         */
         this.series.results = series
         break;
       }
       case 'characters': {
+          /**
+         * On checkbox unselect update component and remove chips
+         */
         let characters: Array<ISerie> = this.characters.results.map((s: ISerie) => ({
           ...s,
           selected: s.id === data.id ? false : s.selected
         }))
+         /** Remove chips by selected item index */
         let idxRemove = this.filterSelecteds.characters.findIndex(x => x.id === data.id)
         this.filterSelecteds.characters.splice(idxRemove, 1)
+         /**
+         * Update characters results
+         */
         this.characters.results = characters
         break;
       }
       case 'creators': {
+          /**
+         * On checkbox unselect update component and remove chips
+         */
         let creators: Array<ISerie> = this.creators.results.map((s: ISerie) => ({
           ...s,
            selected: s.id === data.id ? false : s.selected
          }))
+          /** Remove chips by selected item index */
          let idxRemove = this.filterSelecteds.creators.findIndex(x => x.id === data.id)
          this.filterSelecteds.creators.splice(idxRemove, 1)
+        /**
+         * Update characters results
+         */
          this.creators.results = creators
         //statements; 
         break;
@@ -285,6 +316,9 @@ export class ShopComponent implements OnInit {
         break;
       }
     }
+    /**
+     * Load magazines by custom filter
+     */
     this.getData()
   }
 
@@ -295,17 +329,24 @@ export class ShopComponent implements OnInit {
     this.allMagazines = []
    
     /**
-     * Series comma sepatated
+     * Series comma sepatated formmat to filter
      */
     const series = this.filterSelecteds.series.filter(s => s.selected).map(s => s.id).join(',')
     const characters = this.filterSelecteds.characters.filter(s => s.selected).map(s => s.id).join(',')
     const creators = this.filterSelecteds.creators.filter(s => s.selected).map(s => s.id).join(',')
 
+    /**
+     *  Params data to filter
+     */
     let params = {
       characters: characters,
       series: series,
       creators: creators
     }
+
+    /**
+     * Remove empty attributes
+     */
     if (!series) {
       delete params.series
     }
@@ -315,8 +356,15 @@ export class ShopComponent implements OnInit {
     if (!creators) {
       delete params.creators
     }
-   
+    
+    /**
+     * Update filter data
+     */
     this.filter = params;
+
+    /**
+     * Load magazines
+     */
     this.getMagazines(0)
   }
 }
