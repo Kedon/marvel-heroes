@@ -5,8 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { ShopComponent } from './shop/shop.component';
 import { SharedModule } from '../shared.modules'
-import { CarouselComponent } from '../coomponents/carousel/carousel.component'
-import { FooterComponent } from '../coomponents/footer/footer.comonent'
+import { FooterComponent } from '../components/footer/footer.comonent'
 import { HomeService } from './services/home.service';
 // import { SharedModule } from '../../shared/shared.module';
 
