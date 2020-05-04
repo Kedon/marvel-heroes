@@ -9,7 +9,6 @@
   }
 
   .carousel-container{
-    background-color: $primary;
     max-width: 100%;
     overflow: hidden;
   }
@@ -18,7 +17,8 @@
     position: relative;
     height: 550px;
     margin: 0 auto;
-  }
+    box-shadow: 0px 0px 91px 100px rgba(0,0,0,0.75);
+}
 
   .carousel-image {
     position: absolute;
@@ -32,6 +32,7 @@
     }
     &.next {
       left: 100%;
+      z-index: -1;
       &::before{
         content: '';
         background-color: $primary;
@@ -46,6 +47,7 @@
     }
     &.prev {
       left: -100%;
+      z-index: -1;
       &::before{
         content: '';
         background-color: $primary;
