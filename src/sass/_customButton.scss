@@ -1,0 +1,112 @@
+
+/**
+* Custom  button
+**/
+
+.custom-button {
+    width: auto;
+    border: none;
+    height: 20px;
+    width: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    cursor: pointer;
+
+    transition: all 0.5s ease;
+    &:hover {
+        transform: scale(0.95);
+    }
+    &:active {
+        outline: none;
+        border: none;
+          transform: scale(0.90);
+    }
+        &:focus {outline:0;}
+        /**
+        * Set of custom buttom */
+        &.face {  background-image: url('../assets/img/bt_face.png')}
+        &.twiter {background-image: url('../assets/img/bt_twiter.png')}
+        &.youtube {background-image: url('../assets/img/bt_youtube.png')}
+        &.cart {background-image: url('../assets/img/bt_cart.png')}
+        &.search {background-image: url('../assets/img/bt_search.png')}
+        &.next-banner {
+            height: 40px;
+            width: 40px;
+            background-image: url('../assets/img/arrow-next.png')}
+        &.back-banner {
+            height: 40px;
+            width: 40px;
+            background-image: url('../assets/img/arrow-back.png')}
+  }
+
+
+.marvel {
+    button {
+      width: auto;
+      border: none;
+      height: 50px;
+      -webkit-transform: skew(-12deg) scale(1);
+         -moz-transform: skew(-12deg) scale(1);
+           -o-transform: skew(-12deg) scale(1);
+      background: #F0141E;
+      transition: all 0.5s ease;
+  
+      &.clear {
+          background: #444;
+          color: #fff;
+          &:hover {
+              background: #222;
+          }
+          &:active {
+              outline: none;
+              border: none;
+              -webkit-transform: skew(-12deg) scale(0.95);
+              -moz-transform: skew(-12deg) scale(0.95);
+                -o-transform: skew(-12deg) scale(0.95);
+          }
+              &:focus {outline:0;}
+              &:disabled {
+                background: #f2f2f2;
+                .label {
+                  color: #cccccc;
+                }
+              
+              }    
+      }
+      &:hover {
+          background: #DB0E17;
+      }
+      &:active {
+          outline: none;
+          border: none;
+          -webkit-transform: skew(-12deg) scale(0.95);
+          -moz-transform: skew(-12deg) scale(0.95);
+            -o-transform: skew(-12deg) scale(0.95);
+      }
+          &:focus {outline:0;}
+          &:disabled {
+            background: #dddddd;
+            .label {
+              color: #cccccc;
+            }
+          
+          }
+    
+    }
+    .label {
+      font-size: 20px;
+      padding-right: 20px;
+      padding-left: 20px;
+      font-family: "Roboto-Condensed-bold";
+      text-transform: uppercase;
+      color: #ffffff;
+      -webkit-transform: skew(12deg);
+         -moz-transform: skew(12deg);
+           -o-transform: skew(12deg);
+    }
+  }
+  

@@ -6,6 +6,8 @@ import { MagazineComponent } from './coomponents/magazine/magazine.comonent'
 import { HeaderComponent } from './coomponents/header/header.component';
 import { AdvertisementComponent } from './coomponents/advertisement/advertisement.component';
 import { MenuComponent } from './coomponents/menu/menu.component';
+import { CarouselComponent } from './coomponents/carousel/carousel.component'
+import { from } from 'rxjs';
 
 @NgModule({
   imports: [
@@ -19,15 +21,17 @@ import { MenuComponent } from './coomponents/menu/menu.component';
     MagazineComponent,
     HeaderComponent,
     AdvertisementComponent,
-    MenuComponent
+    MenuComponent,
+    CarouselComponent
   ],
   exports: [
     /** components */
     MagazineComponent,
     HeaderComponent,
     AdvertisementComponent,
-    MenuComponent
+    MenuComponent,
+    CarouselComponent
 ],
-  entryComponents: []
+  entryComponents: [CarouselComponent]
 })
 export class SharedModule { }

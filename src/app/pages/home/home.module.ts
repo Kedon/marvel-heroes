@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { ShopComponent } from './shop/shop.component';
-import { DetailsComponent } from './details/details.component';
 import { SharedModule } from '../shared.modules'
 import { CarouselComponent } from '../coomponents/carousel/carousel.component'
 import { FooterComponent } from '../coomponents/footer/footer.comonent'
@@ -19,6 +18,6 @@ import { HomeService } from './services/home.service';
     HomeRoutingModule
   ],
   providers: [HomeService], /*  => Provice home service to HOME MODULES */
-  declarations: [HomeComponent, ShopComponent, DetailsComponent, CarouselComponent, FooterComponent]
+  declarations: [HomeComponent, ShopComponent, FooterComponent]
 })
 export class HomeModule { }

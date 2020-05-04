@@ -1,6 +1,5 @@
 @import 'src/sass/variables';
 @import 'src/sass/mixins';
-@import 'src/sass/grid';
 
 // Colors
 $bg-color: rgba(0, 0, 0, 0);
@@ -11,7 +10,7 @@ $dot-size: 1px;
 $dot-space: 6px;
 
 
-.advertisement__container {
+.advertisement-container {
     background: radial-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 0px);
     background-size: 7px 5px;
     width: 100%;

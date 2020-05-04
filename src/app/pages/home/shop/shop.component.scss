@@ -16,7 +16,7 @@
   margin: 0 auto;
   color: $dark-grey;
   position: relative;
-  z-index: 3;
+  z-index: 30;
   &__title {
     font-size: $font-md;
     font-family: $roboto-bold;
@@ -102,7 +102,6 @@ color: $white;
 .more-button{
   text-align: center;
   position: relative;
-  z-index: -1;
   hr {
     margin-top: -20px;
   }

@@ -1,0 +1,118 @@
+
+  /**
+  *
+  * CUSTOM CHECKBOX
+  *
+  **/
+  .custom-checkbox {
+    font-family: arial;
+    display: block;
+    position: relative;
+    padding-left: 29px;
+    margin-bottom: 5px;
+    padding-top: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+    .custom-checkbox input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+.custom-checkbox_indicator {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background: #363636;
+    border: 1px solid #939495;
+    border-radius: 0px;
+}
+.custom-checkbox:hover input ~ .custom-checkbox_indicator,
+.custom-checkbox input:focus ~ .custom-checkbox_indicator {
+    background: #f0141e;
+}
+
+.custom-checkbox input:checked ~ .custom-checkbox_indicator {
+    background: #f0141e;
+}
+.custom-checkbox:hover input:not([disabled]):checked ~ .custom-checkbox_indicator,
+.custom-checkbox input:checked:focus ~ .custom-checkbox_indicator {
+    background: #f0141e;
+}
+.custom-checkbox input:disabled ~ .custom-checkbox_indicator {
+    background: #e6e6e6;
+    opacity: 2;
+    pointer-events: none;
+}
+.custom-checkbox_indicator:after {
+    box-sizing: unset;
+    content: '';
+    position: absolute;
+    display: none;
+}
+.custom-checkbox input:checked ~ .custom-checkbox_indicator:after {
+    display: block;
+}
+.custom-checkbox-checkbox .custom-checkbox_indicator:after {
+    left: 5px;
+    top: 2px;
+    width: 3px;
+    height: 7px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.custom-checkbox-checkbox input:disabled ~ .custom-checkbox_indicator:after {
+    border-color: #7b7b7b;
+}
+.custom-checkbox-checkbox .custom-checkbox_indicator::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-left: -1.3rem;
+    margin-top: -1.3rem;
+    background: #f0141e;
+    border-radius: 3rem;
+    opacity: 0.6;
+    z-index: 99999;
+    transform: scale(0);
+}
+@keyframes s-ripple {
+    0% {
+        transform: scale(0);
+    }
+    20% {
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+@keyframes s-ripple-dup {
+   0% {
+       transform: scale(0);
+    }
+   30% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+.custom-checkbox-checkbox input + .custom-checkbox_indicator::before {
+    animation: s-ripple 250ms ease-out;
+}
+.custom-checkbox-checkbox input:checked + .custom-checkbox_indicator::before {
+    animation-name: s-ripple-dup;
+}
