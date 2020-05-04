@@ -31,7 +31,10 @@
         &.face {  background-image: url('../assets/img/bt_face.png')}
         &.twiter {background-image: url('../assets/img/bt_twiter.png')}
         &.youtube {background-image: url('../assets/img/bt_youtube.png')}
-        &.cart {background-image: url('../assets/img/bt_cart.png')}
+        &.cart {
+                width: 25px;
+                height: 25px;
+                background-image: url('../assets/img/bt_cart.png')}
         &.search {background-image: url('../assets/img/bt_search.png')}
         &.next-banner {
             height: 40px;
