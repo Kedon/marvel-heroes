@@ -1,4 +1,4 @@
-# MARVEL - Demonstralção - Frontend Developer Job 
+# MARVEL - Demonstração - Frontend Developer Job 
 
 Este projeto foi gerado com  [Angular CLI](https://github.com/angular/angular-cli) versão  8.1.0.
 
